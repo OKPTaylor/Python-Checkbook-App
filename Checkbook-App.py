@@ -68,7 +68,7 @@ while userReply != "5":
     
     1) view current balance 
     2) record a debit (withdraw) 
-    3) record a credit (depost) 
+    3) record a credit (deposit) 
     4) transaction history
     5) exit\n""") 
 
