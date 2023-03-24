@@ -8,7 +8,7 @@ with open("user_data_timestamp.json", 'r') as f:
 
 
 def currentBalance(userBalance):
-   print(f"\nYour current balance is: ${round(sum(list(userBalance.values())) , 2)}")
+   print(f"\nYour current balance is: ${'{:.2f}'.format(round(sum(list(userBalance.values())) , 2))}")
 
 def history(userBalance):
     with open("user_data_timestamp.json" , 'w') as f:
@@ -16,7 +16,7 @@ def history(userBalance):
 
     print(f"\nThis is your transaction history for your last {len(userBalance)} transactions.\n")
     for a, b in userBalance.items():
-        print(f"{a} ${b}")   
+        print(f"{a} ${'{:.2f}'.format(b)}")   
 
 def withdraw(userBalance):
     userInput = ""
@@ -26,13 +26,14 @@ def withdraw(userBalance):
         if userInput.isalpha():
             print("\nSorry you must enter numbers only.\n")
             
+            
         else:
             userInput=-1*float(userInput)
             userBalance.update({x.strftime("%b-" "%d-" "%Y" " %I:" "%M:" "%S" " %p"): userInput})
             break  
 
           
-    print(f"\nYour new blance is: ${round(sum(list(userBalance.values())) , 2)}")
+    print(f"\nYour new blance is: ${'{:.2f}'.format(round(sum(list(userBalance.values())) , 2))}")
     
     with open("user_data_timestamp.json", 'w') as f:
         json.dump(userBalance,f)      
@@ -46,7 +47,7 @@ def deposit(userBalance):
         
         userInput=input("How much would you like to deposit? $") 
         if userInput.isalpha():
-
+            
             print("\nSorry, you must enter numbers only.\n")
             
         else:
@@ -54,7 +55,7 @@ def deposit(userBalance):
             userBalance.update({x.strftime("%b-" "%d-" "%Y" " %I:" "%M:" "%S" " %p"): userInput})
             break   
               
-    print(f"\nYour new blance is: ${round(sum(list(userBalance.values())) , 2)}")
+    print(f"\nYour new blance is: ${'{:.2f}'.format(round(sum(list(userBalance.values())) , 2))}")
 
     with open("user_data_timestamp.json", 'w') as f:
         json.dump(userBalance,f)      
